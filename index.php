@@ -261,7 +261,7 @@
                         <a href="https://github.com/Jeffkent01coder"><i class="fa-brands fa-github"></i></a>
                         <a href="https://twitter.com/CodexKent"><i class="fa-brands fa-twitter"></i></a>
                     </div>
-                    <a href="images/My Resume.pdf" download class="btn btn2"> Download CV</a>
+                    <a href="images/MyResume.pdf" download class="btn btn2"> Download CV</a>
                 </div>
                 <div class="contact-right"></div>
                 <form id="contact" action="" method="post">
