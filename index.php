@@ -269,8 +269,8 @@
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="message" rows="6" placeholder="Your message"></textarea>
                     <div>
-                        <p class="success"> <?php echo $success;  ?></p>
-                        <p class="failed"> <?php echo $failed;  ?></p>
+                        <p class="success"> <?php echo $success;?></p>
+                        <p class="failed"> <?php echo $failed;?></p>
                     </div>
                     <button type="submit" class="btn btn2" name="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                 </form>
