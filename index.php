@@ -278,7 +278,7 @@
                    
                     <button type="submit" class="btn btn2" name="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                 </form>
-                <span id="msg"></span>
+                
             </div>
         </div>
     </div>
