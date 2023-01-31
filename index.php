@@ -1,4 +1,4 @@
-<?php include 'sentmail.php';?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -264,14 +264,18 @@
                     <a href="images/MyResume.pdf" download class="btn btn2"> Download CV</a>
                 </div>
                 <div class="contact-right"></div>
-                <form id="contact" action="" method="post">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="6" placeholder="Your message"></textarea>
-                    <div>
-                        <p class="success"> <?php echo $success;?></p>
-                        <p class="failed"> <?php echo $failed;?></p>
+                <form id="contact" action="index.php" method="post">
+
+                    
+                    <input type="text" class="input" name="name" id="name" placeholder="Your Name" >
+                    <input type="email" class="input" name="email" id= "email" placeholder="Your Email" >
+                    <textarea name="message" required class="input" rows="6"  id="message" placeholder="Your message"></textarea><br>
+                    <a href="mailto:geoffreyerastus956@gmail.com" style = "text-decoration: none; color: white;">Leave a Direct Email</a>
+
+                    <div> <p id="sent"></p>
+                     
                     </div>
+                   
                     <button type="submit" class="btn btn2" name="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                 </form>
                 <span id="msg"></span>
@@ -283,6 +287,65 @@
     <div class="copyright">
         <p>Copyright @Jeffkent01coder. Made by Jeffkent01coder<i class="fa-solid fa-heart"></i></p>
     </div>
+    
+    <script src="./jQuery.js"></script>
+    <script> 
+        var form = document.getElementById("contact");
+        var btn = document.getElementById("contact-submit");
+
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault()
+        });
+        btn.addEventListener("click", ()=>{
+            $(document).ready(()=>{
+                var name, email, message;
+                name = $("#name").val()
+                email = $("#email").val()
+                message = $("#message").val()
+                
+                var inputs = $("input");
+
+                for(var i = 0; i<inputs.length; i++)
+                {
+                    if(inputs[i].value.length == 0)
+                    {
+                        $("#"+inputs[i].getAttribute("id")).css({
+                            'border' : '1px solid #fb2b2b'
+                        })
+                    }
+                    else
+                    {
+                            $("#"+inputs[i].getAttribute("id")).css({
+                            'border' : '1px solid #1c1c2467'
+                        })
+                    }
+                }
+
+                if(name.val().length > 0 && email.val().length > 0 && message.val().length > 0)
+                {
+                    $.ajax({
+                    type : "post",
+                    url :"./contact.php",
+                    data : {
+                        name :name,
+                        email : email,
+                        message : message 
+                    },
+                    success : (res) => {
+                        $("#sent").html(res)
+
+                        setTimeout(()=>{
+                            $("#sent").html("")
+                            $("#name").val("")
+                            $("#email").val("")
+                            $("#message").val("")
+                        }, 2000)
+                    }
+                })
+                }
+            })
+        })
+    </script>
 
     <script>
         var tablinks = document.getElementsByClassName("tab-links");
